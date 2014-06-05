@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.example.pricedevsandroid.ArraysAdapters.HotelArrayAdapter;
 import com.example.pricedevsandroid.models.Hotel;
+import com.example.pricedevsandroid.service.GetHotelsAsynkTask;
+import com.example.pricedevsandroid.service.HotelService;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
@@ -95,53 +97,60 @@ public class MainActivity extends ActionBarActivity {
 			//Cargamos el contenido de la lista de hoteles con valores estaticos
 			//A futuro estos se deben que cargar dinamicamente
 			
-			Hotel tempHotel = new Hotel();
+			try
+			{
+				hotelList = new GetHotelsAsynkTask().execute().get();
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
 			
-			tempHotel.setId(0);
-			tempHotel.setName("Mayan Palace");
-			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
-			tempHotel.setDescription("");
-			tempHotel.setLat(0.0);
-			tempHotel.setLon(0.0);
-			tempHotel.setMainImage("");
-		
-			hotelList.add(tempHotel);
-			
-			tempHotel = new Hotel();
-			
-			tempHotel.setId(1);
-			tempHotel.setName("Club Med");
-			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
-			tempHotel.setDescription("");
-			tempHotel.setLat(0.0);
-			tempHotel.setLon(0.0);
-			tempHotel.setMainImage("");
-		
-			hotelList.add(tempHotel);
-			
-			tempHotel = new Hotel();
-			
-			tempHotel.setId(2);
-			tempHotel.setName("Holiday Inn");
-			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
-			tempHotel.setDescription("");
-			tempHotel.setLat(0.0);
-			tempHotel.setLon(0.0);
-			tempHotel.setMainImage("");
-		
-			hotelList.add(tempHotel);
-			
-			tempHotel = new Hotel();
-			
-			tempHotel.setId(3);
-			tempHotel.setName("Hotel One");
-			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
-			tempHotel.setDescription("");
-			tempHotel.setLat(0.0);
-			tempHotel.setLon(0.0);
-			tempHotel.setMainImage("");
-		
-			hotelList.add(tempHotel);
+//			Hotel tempHotel = new Hotel();
+//			
+//			tempHotel.setId(0);
+//			tempHotel.setName("Mayan Palace");
+//			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
+//			tempHotel.setDescription("");
+//			tempHotel.setLat(0.0);
+//			tempHotel.setLon(0.0);
+//			tempHotel.setMainImage("");
+//		
+//			hotelList.add(tempHotel);
+//			
+//			tempHotel = new Hotel();
+//			
+//			tempHotel.setId(1);
+//			tempHotel.setName("Club Med");
+//			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
+//			tempHotel.setDescription("");
+//			tempHotel.setLat(0.0);
+//			tempHotel.setLon(0.0);
+//			tempHotel.setMainImage("");
+//		
+//			hotelList.add(tempHotel);
+//			
+//			tempHotel = new Hotel();
+//			
+//			tempHotel.setId(2);
+//			tempHotel.setName("Holiday Inn");
+//			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
+//			tempHotel.setDescription("");
+//			tempHotel.setLat(0.0);
+//			tempHotel.setLon(0.0);
+//			tempHotel.setMainImage("");
+//		
+//			hotelList.add(tempHotel);
+//			
+//			tempHotel = new Hotel();
+//			
+//			tempHotel.setId(3);
+//			tempHotel.setName("Hotel One");
+//			tempHotel.setLogo("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/p160x160/1010531_675077915846338_1351905964_a.jpg");
+//			tempHotel.setDescription("");
+//			tempHotel.setLat(0.0);
+//			tempHotel.setLon(0.0);
+//			tempHotel.setMainImage("");
+//		
+//			hotelList.add(tempHotel);
 			
 			// Create a customized ArrayAdapter
 			adapter = new HotelArrayAdapter( rootView.getContext(), R.layout.iconrow, hotelList);
